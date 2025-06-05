@@ -5,40 +5,26 @@
 int main(void)
 {
 	int A, B, C;
-	int max = 0;
+	int max, sum;
 	while (1)
 	{
 		scanf("%d %d %d", &A, &B, &C);
-		if (A == 0) return 0;
+		if (A == 0) break;
 
-		if (A > B && A > C)
+		max = A;
+		if (B > max) max = B;
+		if (C > max) max = C;
+		sum = A + B + C - max;
+		
+		if (max >= sum)
 		{
-			if (A >= B + C)
-			{
-				printf("Invalid\n");
-				continue;
-			}
-		}
-		else if (B > A && B > C)
-		{
-			if (B >= A + C)
-			{
-				printf("Invalid\n");
-				continue;
-			}
-		}
-		else if (C > B && C > A)
-		{
-			if (C >= B + A)
-			{
-				printf("Invalid\n");
-				continue;
-			}
+			printf("Invalid\n");
+			continue;
 		}
 
 		if (A == B && B == C) printf("Equilateral\n");
-		else if (A != B && B != C && A != C) printf("Scalene\n");
-		else printf("Isosceles\n");
+		else if (A == B || B == C || A == C) printf("Isosceles\n");
+		else printf("Scalene\n");
 	}
 	return 0;
 }
