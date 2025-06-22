@@ -5,29 +5,24 @@ int main()
 {
 	int n;
 	scanf("%d", &n);
-	int max = n / 5;
-	int i,j=0;
+	
+	int bag = 0;
 	int flag = 0;
-	for (i = max; i >= 0; i--)
+	while (n >= 0)
 	{
-		for (j = 0; j < 1000; j++)
+		if (n % 5 == 0)
 		{
-			if (5 * i + 3 * j == n)
-			{
-				printf("%d\n", i + j);
-				flag = 1;
-				break;
-			}
-			else if (5 * i + 3 * j > n)
-			{
-				break;
-			}
+			bag += n / 5;
+			flag = 1;
+			break;
 		}
-		if (flag == 1) break;
+		n -= 3;
+		bag++;
 	}
-	if (flag == 0)
+	if (flag)
 	{
-		printf("-1\n");
+		printf("%d\n", bag);
 	}
+	else printf("-1\n");
 	return 0;
 }
